@@ -1,0 +1,481 @@
+
+*{
+    margin: 0;
+    padding: 0;
+   box-sizing: border-box;
+}
+
+body, 
+html {
+    height: 100vh;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #08080c;
+    color: #b0bec5;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin-left: 0; 
+    min-width: 800px;
+}
+
+.SpaceSystem_MainscreenWala { 
+    font-family: 'SpaceSystem_MainscreenWala', sans-serif; 
+}
+
+.StarKaArea {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    background: 
+        radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0));
+    background-size: 100px 100px;
+    animation-name: StarPanArea;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background-repeat: repeat;
+}
+
+@keyframes StarPanArea {
+    from { 
+        background-position-x: 0; 
+        background-position-y: 0;
+    }
+    to { 
+        background-position-x: 100px; 
+        background-position-y: 100px; 
+    } 
+}
+
+
+.MovingStar {
+    position: fixed;
+    top: -100px; 
+    left: 0;
+    width: 10px;
+    height: 4px;
+    background: linear-gradient(-45deg, #00e5ff, transparent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 1px #00e5ff;
+    animation-name: ShootStarAnimation;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 100;
+    opacity: 0;
+}
+
+.MovingStar:nth-child(2) { top: 10%; animation-delay: 3s; }
+.MovingStar:nth-child(3) { top: 30%; animation-delay: 7s; }
+.MovingStar:nth-child(4) { top: 40%; animation-delay: 10s; }
+.MovingStar:nth-child(5) { top: 50%; animation-delay: 3s; }
+.MovingStar:nth-child(6) { top: 60%; animation-delay: 10s; }
+
+@keyframes ShootStarAnimation {
+    0% { 
+        transform: translateX(0) translateY(0) rotate(45deg); 
+        opacity: 0; 
+    }
+    5% { 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateX(200vw) translateY(200vh) rotate(45deg); 
+        opacity: 0; 
+    }
+}
+
+.side_vala_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto; 
+    padding: 1rem 2rem;
+    background-color: #1e1e1e;
+    border-bottom: 2px solid yellow;
+    box-shadow: 0 5px 15px rgb(221, 255, 0); 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.Title {
+    margin-bottom: 0;
+    text-align: left;
+    font-size: 1.2rem;
+    color: yellow;
+    text-shadow: 0 0 5px yellow;
+}
+
+.NavKeList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+    flex-grow: 0;
+}
+
+.NavKeLink {
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+    color: #e0e0e0;
+    display: block;
+    padding: 5px 10px; 
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 1px;
+}
+
+.NavKeLink:hover,
+.NavKeLink:focus {
+    color: #64ffda; 
+    border-bottom-color: #64ffda;
+    background-color: rgba(0, 255, 153, 0.08); 
+    text-shadow: 0 0 2px #64ffda;
+    transform: translateY(-2px);
+}
+
+
+.SolarSystem {
+    position: fixed;
+    top: 100px; 
+    left: 60%; 
+    transform: translate(-50%, 0); 
+    width: 1000px;
+    height: 1000px;
+    z-index: 10;
+    opacity: 0.6; 
+    transition: opacity 0.5s;
+}
+
+.SolarSystem:hover {
+    opacity: 1;
+}
+
+.sun {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: yellow;
+    position: absolute;
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+    box-shadow: 0 0 50px blue;
+    animation: Pulse 3s ease-in-out infinite alternate;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #08080c;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #fff;
+    text-decoration: none;
+}
+
+@keyframes Pulse { 
+    from { 
+        box-shadow: 0 0 30px yellow; 
+    } 
+    to { 
+        box-shadow: 0 0 60px yellow, 0 0 20px yellow inset; 
+    } 
+}
+
+
+.OrbitOfPlanet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: OrbitRotation 20s linear infinite;
+}
+
+@keyframes OrbitRotation { 
+    from { 
+        transform: translate(-50%, -50%) rotate(0deg); 
+    } 
+    to { 
+        transform: translate(-50%, -50%) rotate(360deg); 
+    } 
+}
+
+
+#orbit-mercury { width: 150px; height: 150px; margin: -75px; } 
+#orbit-mars { width: 250px; height: 250px; margin: -125px; }
+#orbit-jupiter { width: 350px; height: 350px; margin: -175px; }
+#orbit-saturn { width: 450px; height: 450px; margin: -225px; }
+
+
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    top: 50%;
+    left: 50%;
+    text-decoration: none;
+}
+
+.planet:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 20px #00e5ff;
+    z-index: 11;
+}
+
+
+.planet-label {
+    position: absolute;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: sans-serif;
+}
+
+.planet:hover .planet-label {
+    opacity: 2;
+}
+
+
+#mercury { 
+    background-color: #a9a9a9; 
+    width: 15px; 
+    height: 15px; 
+    margin-left: -7.5px; 
+    margin-top: -7.5px;
+}
+
+#mars { 
+    background-color: #e57373; 
+    width: 20px; 
+    height: 20px; 
+    margin-left: -10px;
+    margin-top: -10px;
+}
+
+#jupiter { 
+    background-color: #ffcc80; 
+    width: 30px; 
+    height: 30px; 
+    margin-left: -15px; 
+    margin-top: -15px;
+}
+
+#saturn { 
+    background-color: #fff176; 
+    width: 25px; 
+    height: 25px; 
+    margin-left: -12.5px;
+    margin-top: -12.5px;
+}
+
+
+#saturn::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    transform: rotate(60deg);
+    top: -10px;
+    left: -10px;
+}
+@keyframes orbit1 {
+    from { transform: rotate(0deg) translateX(75px) rotate(0deg); } 
+    to { transform: rotate(360deg) translateX(75px) rotate(-360deg); } 
+}
+@keyframes orbit2 {
+    from { transform: rotate(0deg) translateX(125px) rotate(0deg); } 
+    to { transform: rotate(360deg) translateX(125px) rotate(-360deg); } 
+}
+@keyframes orbit3 {
+    from { transform: rotate(0deg) translateX(175px) rotate(0deg); } 
+    to { transform: rotate(360deg) translateX(175px) rotate(-360deg); } 
+}
+@keyframes orbit4 {
+    from { transform: rotate(0deg) translateX(225px) rotate(0deg); } 
+    to { transform: rotate(360deg) translateX(225px) rotate(-360deg); } 
+}
+
+
+#mercury { animation-name: orbit1; animation-duration: 10s; animation-timing-function: linear; animation-iteration-count: infinite; }
+#mars { animation-name: orbit2; animation-duration: 18s; animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: reverse; }
+#jupiter { animation-name: orbit3; animation-duration: 35s; animation-timing-function: linear; animation-iteration-count: infinite; }
+#saturn { animation-name: orbit4; animation-duration: 50s; animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: reverse; }
+
+.Collect {
+    position: relative;
+    z-index: 20; 
+    padding-top: 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-right: 20px;
+    padding-left: 20px; 
+}
+
+
+.PlanetSection {
+    min-height: 80vh; 
+    padding: 5rem 2rem;
+    margin-bottom: 4rem;
+    background: rgba(18, 18, 25, 0.9);
+    border-radius: 15px;
+    border-left: 5px solid #00e5ff;
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease;
+}
+
+.PlanetSection:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 60px rgba(0, 229, 255, 0.2);
+    border-left-color: yellow;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #00e5ff;
+    border-bottom: 3px solid #00e5ff;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'SpaceSystem_MainscreenWala', sans-serif;
+}
+
+#about h2::before { content: 'MERCURY: '; color: #a9a9a9; font-size: 0.8em; }
+#projects h2::before { content: 'MARS: '; color: #e57373; font-size: 0.8em; }
+#skills h2::before { content: 'JUPITER: '; color: #ffcc80; font-size: 0.8em; }
+#contact h2::before { content: 'SATURN: '; color: #fff176; font-size: 0.8em; }
+
+p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    color: #b0bec5;
+}
+
+
+.ProjectCard {
+    background: rgba(30, 30, 40, 0.8);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(0, 229, 255, 0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.ProjectCard:hover {
+    transform: translateY(-5px);
+    border-color: #00e5ff;
+}
+
+.ProjectCard h3 { color: #00e5ff; margin-bottom: 0.5rem; }
+
+.SkillsGrid {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.SkillPointAnimation {
+    background: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #00e5ff;
+    transition: background 0.3s;
+}
+
+.SkillPointAnimation:hover {
+    background: rgba(0, 229, 255, 0.3);
+}
+
+
+.ContactLink {
+    display: inline-block;
+    color: yellow;
+    text-decoration: none;
+    border: 2px solid yellow;
+    padding: 0.75rem 1.5rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+    font-weight: bold;
+    font-family: 'SpaceSystem_MainscreenWala', sans-serif;
+}
+
+.ContactLink:hover {
+    background: yellow;
+    color: #08080c;
+    box-shadow: 0 0 15px blue;
+}
+
+
+
+@media (max-width: 900px) {
+    
+    .side_vala_bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 0.5rem;
+        height: auto;
+    }
+    
+    .Title {
+        margin-bottom: 0.5rem;
+    }
+
+    .NavKeList {
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+    
+    
+    .SolarSystem {
+        width: auto;
+        height: auto;
+        margin-top: 50%;
+    }
+    
+  
+    .Collect {
+        padding-top: 8rem;
+    }
+    
+    body {
+        min-width: unset; 
+    }
+}
+
+img{
+    width: 200px;
+    height: 300px;
+    margin-left: 40%;
+}
